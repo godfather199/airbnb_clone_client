@@ -1,3 +1,5 @@
+import {Properties} from '../../components'
+import {HostedProperties} from '../'
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -17,9 +19,9 @@ function CustomTabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
+        <div style={{ p: 3 }}>
+          {children}
+        </div>
       )}
     </div>
   );
@@ -46,19 +48,27 @@ export default function HostDashboardTabs() {
   };
 
   return (
-    <Box sx={{ width: '100%' }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+    <div style={{ width: "100%" }}>
+      <div style={{ borderBottom: 1, borderColor: "divider" }}>
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          aria-label="basic tabs example"
+        >
           <Tab label="All Properties" {...a11yProps(0)} />
           <Tab label="Currently Hosted" {...a11yProps(1)} />
         </Tabs>
-      </Box>
+      </div>
+
+      {/* All properties */}
       <CustomTabPanel value={value} index={0}>
-        Properties
+        <Properties tabValue={value} />
       </CustomTabPanel>
+
+      {/* Hosted properites */}
       <CustomTabPanel value={value} index={1}>
-        Properties
+        <HostedProperties />
       </CustomTabPanel>
-    </Box>
+    </div>
   );
 }

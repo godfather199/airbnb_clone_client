@@ -19,3 +19,14 @@ export const fetch_Booked_Property_Service = async () => {
     
     return data
   }
+
+
+
+  
+  export const logged_In_User_Hosted_Property_Service = async () => {
+    const {data} = await axios.get(
+      `/api/booking/hosted-properites`
+    )
+  
+    return data
+  }

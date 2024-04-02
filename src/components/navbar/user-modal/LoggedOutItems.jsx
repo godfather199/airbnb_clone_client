@@ -61,14 +61,16 @@ function LoggedOutItems({handleClose}) {
         </MenuItem>
       </Link>
 
-      <MenuItem
-        // style={{ border: "3px solid green" }}
-        className="w-[15rem] h-[3.5rem] "
-        onClick={handleClose}
-      >
-        <SummarizeIcon style={{ color: "red" }} />{" "}
-        <span className="ml-[0.7rem]">Manage Listings</span>
-      </MenuItem>
+      <Link to="/hosting">
+        <MenuItem
+          // style={{ border: "3px solid green" }}
+          className="w-[15rem] h-[3.5rem] "
+          onClick={handleClose}
+        >
+          <SummarizeIcon style={{ color: "red" }} />{" "}
+          <span className="ml-[0.7rem]">Manage Listings</span>
+        </MenuItem>
+      </Link>
 
       <MenuItem
         // style={{ border: "3px solid green" }}

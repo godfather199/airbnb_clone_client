@@ -3,6 +3,7 @@ import {
   thunk_Fetch_All_Properties,
   thunk_Fetch_Property_By_Category,
   thunk_Fetch_Single_Property,
+  thunk_Logged_In_User_Property,
   thunk_New_Property,
   thunk_Property_By_Filters,
 } from "../thunks/propertyThunk";
@@ -64,6 +65,16 @@ export const propertySlice = createSlice({
         state.isLoading = false;
         state.properties = properties;
       })
+      .addCase(thunk_Logged_In_User_Property.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(thunk_Logged_In_User_Property.fulfilled, (state, {payload}) => {
+        const {msg, properties} = payload
+
+        state.isLoading = false
+        state.properties = properties
+      })
+     
       .addCase(thunk_Fetch_Property_By_Category.pending, (state) => {
         state.isLoading = true;
       })
@@ -102,3 +113,6 @@ export const {
 } = propertySlice.actions;
 
 export default propertySlice.reducer;
+
+
+

@@ -8,7 +8,6 @@ function Trips() {
   const dispatch = useDispatch()
 
   const {bookings, isLoading} = useSelector(state => state.booking)
-console.log('Bookings: ', bookings)
 
 
   // Fetch logged-in users bookings

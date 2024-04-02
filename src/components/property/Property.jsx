@@ -5,6 +5,8 @@ import {PhotoSlider} from '../'
 
 function Property({property}) {
   // console.log("Property details: ", property)
+
+
   return (
     <div
       // style={{ border: "3px solid purple" }}
@@ -25,14 +27,14 @@ function Property({property}) {
           className="flex flex-col w-[20rem]"
         >
           <span className="font-semibold text-gray-700 text-lg">
-            {property.location}
+            {property?.location}
           </span>
           <span className="font-md text-gray-500 text-sm">
-            {property.distance}{" "}
+            {property?.distance}{" "}
             <span className=" text-gray-500">kilometers away</span>
           </span>
           <span className="">
-            {`₹${property.price}`} <span className=" text-gray-500">night</span>
+            {`₹${property?.price}`} <span className=" text-gray-500">night</span>
           </span>
         </div>
       </Link>

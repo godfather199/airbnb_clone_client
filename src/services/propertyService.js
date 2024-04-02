@@ -58,3 +58,16 @@ export const fetch_Search_Bar_Results_Service = async (search_Term) => {
 
   return data
 }
+
+
+
+export const logged_In_User_Property_Service = async () => {
+  const {data} = await axios.get(
+    `/api/property/user-properties`
+  )
+
+  return data
+}
+
+
+

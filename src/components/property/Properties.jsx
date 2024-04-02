@@ -1,7 +1,10 @@
 import {Property, SkeletonProperty} from '../'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import {  thunk_Fetch_All_Properties } from '../../store/thunks/propertyThunk'
+import {
+  thunk_Fetch_All_Properties,
+  thunk_Logged_In_User_Property,
+} from "../../store/thunks/propertyThunk";
 import { useLocation } from 'react-router-dom'
 import { thunk_property_From_Whishlist } from '../../store/thunks/userThunk'
 import { set_Whishlist_Properties } from '../../store/slices/propertySlice'
@@ -9,7 +12,7 @@ import { reset_Is_Success_Whishlist } from '../../store/slices/userSlice'
 
 
 
-function Properties() {
+function Properties({tabValue}) {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
 
@@ -31,7 +34,9 @@ function Properties() {
 
   // Fetch all properties
   useEffect(() => {
-    if (pathname === "/whishlist") {
+    if (pathname === "/hosting" && tabValue === 0) {
+      dispatch(thunk_Logged_In_User_Property());
+    } else if (pathname === "/whishlist") {
       dispatch(thunk_property_From_Whishlist());
     } else {
       dispatch(thunk_Fetch_All_Properties());

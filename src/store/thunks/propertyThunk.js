@@ -3,6 +3,7 @@ import {
   fetch_All_Properties_Service,
   fetch_Property_By_Category_Service,
   fetch_Single_Property_Service,
+  logged_In_User_Property_Service,
   new_Property_Service,
   property_By_Filters_Service,
 } from "../../services/propertyService";
@@ -67,5 +68,16 @@ export const thunk_Fetch_Single_Property = createAsyncThunk(
 )
 
 
+
+
+export const thunk_Logged_In_User_Property = createAsyncThunk(
+    'property/user-properties', async (thunkAPI) => {
+        try {
+            return await logged_In_User_Property_Service()
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.response.data.message)
+        }
+    }
+)
 
 

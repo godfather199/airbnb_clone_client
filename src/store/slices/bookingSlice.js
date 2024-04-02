@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { thunk_Booked_Properties, thunk_Fetch_Latest_Booking } from "../thunks/bookingThunk"
+import { thunk_Booked_Properties, thunk_Fetch_Latest_Booking, thunk_Logged_In_User_Hosted_Property } from "../thunks/bookingThunk"
 
 const initialState = {
     isLoading: false,
@@ -40,7 +40,16 @@ export const bookingSlice = createSlice({
 
             state.isLoading = false;
             state.bookings = users_Bookings
-          });
+          })
+          .addCase(thunk_Logged_In_User_Hosted_Property.pending, (state) => {
+            state.isLoading = true
+          })
+          .addCase(thunk_Logged_In_User_Hosted_Property.fulfilled, (state, {payload}) => {
+            const {msg, filter_Booked_Properties} = payload
+    
+            state.isLoading = false
+            state.bookings = filter_Booked_Properties[0].property_Bookings
+          })
     }
 })
 
