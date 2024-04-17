@@ -11,27 +11,42 @@ function SubtitleField({ register, errors, control }) {
 
 
   return (
-    <div style={{ border: "3px solid red" }} className="">
-      <label className="">Subtitles</label>
+    <div  className=" border border-gray-100 p-5 mb-8 rounded-sm shadow-lg">
+      {/* <label className="text-xl font-semibold text-red-600">Subtitles</label> */}
       {fields.map((field, idx) => (
-        <li key={field.id} className="">
+        <li
+          // style={{ border: "3px solid green" }}
+          key={field.id}
+          className=" w-[70%] list-none my-6 flex items-center justify-between"
+        >
           <input
             {...register(`subtitle.${idx}`)}
-            placeholder="Enter a skill"
+            placeholder="Enter Subtitle"
             type="text"
-            className=""
+            className="border-b-2 border-gray-300 outline-none text-md font-medium text-gray-500"
           />
-          <button type="button" className="" onClick={() => remove(idx)}>
-            Remove subtitle
+          <button
+            type="button"
+            className="bg-blue-600 text-white font-semibold text-sm tracking-tighter w-[7.5rem] h-[2.7rem] rounded-[0.3rem] "
+            onClick={() => remove(idx)}
+          >
+            Remove Subtitle
           </button>
         </li>
       ))}
 
-      <button type="button" onClick={() => append()} className="">
-        Add subtitle
+      <button
+        type="button"
+        onClick={() => append()}
+        className="bg-red-600 text-white font-semibold text-md tracking-tighter p-3 rounded-[0.5rem]"
+      >
+        Add Subtitle
       </button>
     </div>
   );
 }
 
 export default SubtitleField;
+
+
+

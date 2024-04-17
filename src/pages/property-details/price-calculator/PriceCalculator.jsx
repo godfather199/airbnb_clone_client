@@ -58,7 +58,10 @@ function PriceCalculator({cost}) {
 
 
   return (
-    <div className="flex flex-col gap-6 p-7 shadow-gray-400 shadow-lg relative">
+    <div
+      // style={{ border: "3px solid purple" }}
+      className="flex flex-col  gap-4 p-5 border-2 border-gray-300 shadow-gray-400 shadow-lg relative w-[25rem] h-[20rem] mb-5 ml-[0.8rem] rounded-[0.4rem]"
+    >
       {/* Show a message to the owner of the property */}
       {userIsOwner && (
         <div
@@ -105,10 +108,10 @@ function PriceCalculator({cost}) {
       </div>
 
       {/* Button */}
-      <div className="">
+      <div className="mt-2">
         {dateRange[0] && dateRange[1] ? (
           <button
-            className="w-full bg-red-600 text-white h-[3.9rem] text-2xl font-semibold rounded-[0.7rem] shadow-black"
+            className=" bg-red-600 text-white h-[3.9rem] text-2xl font-semibold w-[89.5%]  rounded-[0.7rem] shadow-black"
             onClick={handle_Checkout_Page}
           >
             Reserve
@@ -118,7 +121,7 @@ function PriceCalculator({cost}) {
             disabled={userIsOwner}
             className={`w-full ${userIsOwner ? "bg-gray-200" : "bg-red-600"} ${
               userIsOwner ? "cursor-not-allowed" : " cursor-pointer"
-            }  text-white h-[3.9rem] text-2xl font-semibold rounded-[0.7rem] shadow-black`}
+            }  text-white w-[89%] h-[3.9rem] text-2xl font-semibold rounded-[0.7rem] shadow-black`}
             onClick={handle_Open_Calendar}
           >
             Check Availability

@@ -14,12 +14,12 @@ function PhotoGallery({propertyPhotos}) {
   // console.log('Photos: ', photos)
 
   return (
-    <div style={{ border: "3px solid purple" }} className="flex  gap-3">
+    <div  className="flex  gap-3 p-3">
       <div className="">
         <img
           src={propertyPhotos?.[0]?.url}
           alt=""
-          className="w-[30rem] h-[23rem]"
+          className="w-[15rem] h-[13rem] sm:w-[30rem] sm:h-[23rem] rounded-[0.4rem] object-cover"
         />
       </div>
       <div className=" flex flex-col gap-3">
@@ -28,7 +28,7 @@ function PhotoGallery({propertyPhotos}) {
             key={item?.url}
             src={item?.url}
             alt=""
-            className="w-[20rem] h-[11.1rem] object-cover"
+            className="w-[13rem] h-[6.1rem] sm:w-[20rem] sm:h-[11.1rem] object-cover rounded-[0.4rem]"
           />
         ))}
       </div>

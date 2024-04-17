@@ -32,9 +32,15 @@ function PropertyDetails() {
 
 
   return (
-    <div className="">
+    <div
+      // style={{ border: "3px solid green" }}
+      className="w-[30rem] sm:w-[38rem] md:w-[47rem] lg:w-[57rem] xl:w-[70rem] "
+    >
       {/* Location title */}
-      <div className="">
+      <div
+        // style={{ border: "3px solid red" }}
+        className="text-2xl font-semibold text-gray-600 my-5 ml-4 text-center lg:text-start"
+      >
         <span className="">{property?.title}</span>
       </div>
 
@@ -44,34 +50,38 @@ function PropertyDetails() {
       </div>
 
       {/* Property details */}
-      <div className="flex">
+      <div className="flex flex-col lg:flex-row relative">
         <div className="">
           {/* Location sub-details */}
-          <div className="">
+          <div style={{ border: "3px solid red" }} className="ml-3">
             <PropertySubDetails subDetails={property?.subtitle} />
           </div>
 
-          <div className="border border-gray-300  w-[15rem] my-5" />
+          <div className="border border-gray-300  w-[90%] my-5 ml-3" />
 
           {/* Host name & image */}
-          <div className="">
+          <div className="ml-2">
             <HostImage
               hostName={property?.owner?.name}
-              hostImage={property?.owner?.userAvatar?.url}
+              hostImage={property?.owner?.user_Avatar?.url}
             />
           </div>
 
-          <div className="border border-gray-300  w-[15rem] my-5" />
+          <div className="border border-gray-300  w-[90%] my-5 ml-3" />
 
           {/* Property main details */}
-          <div className="">
+          <div className="ml-3">
             <PropertyMainDetails />
           </div>
 
+          <div className="border border-gray-300  w-[90%] my-5 ml-3" />
+
           {/* Host details */}
-          <div className="">
+          <div className="ml-3">
             <HostDetails details={property?.owner} />
           </div>
+
+          <div className="border border-gray-300  w-[95%] my-[2rem] ml-3" />
 
           {/* Property Features */}
           <div className="">
@@ -80,8 +90,8 @@ function PropertyDetails() {
         </div>
 
         {/* Price Calculator */}
-        <div  className=" ">
-          <PriceCalculator cost = {property?.price} />
+        <div className=" lg:sticky lg:top-[7rem] lg:self-start  lg:mt-2">
+          <PriceCalculator cost={property?.price} />
         </div>
       </div>
     </div>

@@ -32,6 +32,9 @@ export const propertySlice = createSlice({
     reset_Property_Details: (state) => {
       state.property = {};
     },
+    reset_All_Properties: (state) => {
+      state.properties = []
+    },
     set_Filter_Flag: (state, { payload }) => {
       state.filterFlag = payload;
     },
@@ -110,6 +113,7 @@ export const {
   reset_Property_Details,
   set_Filter_Flag,
   set_Whishlist_Properties,
+  reset_All_Properties
 } = propertySlice.actions;
 
 export default propertySlice.reducer;

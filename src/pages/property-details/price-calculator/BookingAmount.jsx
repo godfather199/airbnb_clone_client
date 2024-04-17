@@ -48,9 +48,9 @@ function BookingAmount({dateRange, cost, guests, stripeSuccess}) {
       <div className="flex items-center justify-between text-lg text-gray-700 ">
         <div
           // style={{ border: "2px solid orange" }}
-          className="w-[9rem] flex items-center justify-between border border-b-gray-700 border-r-0 border-l-0 border-t-0 "
+          className="w-[11rem] flex items-center justify-between border border-b-gray-700 border-r-0 border-l-0 border-t-0 text-md "
         >
-          <span className="">{`₹${cost
+          <span  className="">{`₹${cost
             ?.toString()
             .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}</span>
           <CloseIcon style={{ fontSize: "1.1rem", marginTop: "2px" }} />
@@ -65,16 +65,16 @@ function BookingAmount({dateRange, cost, guests, stripeSuccess}) {
       </div>
 
       {/* Airbnb cost */}
-      <div className="flex items-center justify-between text-lg text-gray-700 ">
+      <div className="flex items-center justify-between  text-gray-700 ">
         <div
           // style={{ border: "2px solid orange" }}
-          className="w-[10rem] flex items-center justify-between border border-b-gray-700 border-r-0 border-l-0 border-t-0 "
+          className="w-[11rem] flex items-center justify-between border border-b-gray-700 border-r-0 border-l-0 border-t-0  "
         >
-          <span className="">Airbnb Service Fees</span>
+          <span className="text-lg">Airbnb Service Fees</span>
         </div>
 
         <div className="">
-          <span className="">₹1,200</span>
+          <span className="text-lg">₹1,200</span>
         </div>
       </div>
 

@@ -15,8 +15,9 @@ const style = {
   width: 800,
   height: 600,
   // bgcolor: 'background.paper',
-  border: '2px solid #000',
+  // border: '2px solid #000',
   boxShadow: 24,
+  borderRadius: '0.5rem'
   // p: 4,
 };
 
@@ -29,13 +30,23 @@ export default function UploadPhotos({selectedImages, setSelectedImages}) {
 
 
   return (
-    <div>
-      <Button onClick={handleOpen} startIcon={<AddToPhotosIcon />}>
+    <div className='my-5'>
+      <Button
+        variant="contained"
+        size='large'
+        color="error"
+        onClick={handleOpen}
+        startIcon={<AddToPhotosIcon />}
+        className="p-5"
+      >
         Add Photos
       </Button>
       <Modal open={open} onClose={handleClose}>
         <div style={style} className="bg-white  overflow-y-scroll">
-          <CloseIcon style={{position: 'absolute', right: '0'}} onClick = {handleClose} />
+          <CloseIcon
+            style={{ position: "absolute", right: "20", top: "15", fontSize: '25px' }}
+            onClick={handleClose}
+          />
           <DragNDrop
             selectedImages={selectedImages}
             setSelectedImages={setSelectedImages}
@@ -45,3 +56,5 @@ export default function UploadPhotos({selectedImages, setSelectedImages}) {
     </div>
   );
 }
+
+

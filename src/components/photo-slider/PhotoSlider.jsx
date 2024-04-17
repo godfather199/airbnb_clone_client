@@ -69,7 +69,6 @@ const PhotoSlider = ({slideImages, property_Id}) => {
       onMouseLeave={handle_Hide_Button}
     >
       <Slide
-        p
         transitionDuration={300}
         prevArrow={
           <div

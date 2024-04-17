@@ -41,10 +41,13 @@ export default function LoginModal({
   openLogin,
   handle_Login_Open,
   handle_Login_Close,
+  is_Loading,
 }) {
   const dispatch = useDispatch()
 
-  const {is_Loading, is_Success} = useSelector(state => state.user)
+  // console.log('is_Success: ', is_Success)
+  // console.log('is_Loading: ', is_Loading)
+  // console.log('current_User: ', current_User)
 
   const {
     register,
@@ -56,21 +59,10 @@ export default function LoginModal({
   });
 
 
-  // User login successfull
-  useEffect(() => {
-    if (is_Success) {
-      setTimeout(() => {
-        handle_Login_Close();
-        reset();
-        dispatch(reset_User_State());
-      }, 2600);
-    }
-  }, [is_Success]);
-
-
   const handle_Login_Submit = (value) => {
-    dispatch(thunk_Login(value))
-  }
+    console.log('handle_Login_Submit ran')
+     dispatch(thunk_Login(value));
+   };
 
 
   return (

@@ -30,14 +30,15 @@ function CheckInOut({
     <div className="">
       <div className="flex cursor-pointer" onClick={handle_Open_Calendar}>
         {/* Check-in */}
-        <div className="w-[10rem] flex flex-col items-center justify-center border border-gray-500 p-1 rounded-bl-lg ">
+        <div className="w-[10rem] flex flex-col items-center justify-center border border-gray-500 p-3 rounded-bl-lg ">
           <span className="text-xs font-semibold text-gray-600">CHECK-IN</span>
-          <span className="text-md font-light text-gray-400">
+          <span className="text-sm font-light text-gray-500">
             <input
+              // style={{border: '3px solid red'}}
               type="text"
               placeholder="Add date"
               disabled
-              className="outline-none bg-white w-[5rem] cursor-pointer"
+              className="outline-none bg-white w-[6rem]  ml-6"
               value={
                 startDate
                   ? format(startDate, "dd/MM/yyyy", { locale: enINLocale })
@@ -48,13 +49,13 @@ function CheckInOut({
         </div>
 
         {/* Check-out */}
-        <div className="w-[10rem] flex flex-col items-center justify-center border border-gray-500 p-1 rounded-br-lg ">
+        <div className="w-[10rem] flex flex-col items-center justify-center border border-gray-500 p-3 rounded-br-lg ">
           <span className="text-xs font-semibold text-gray-600">CHECKOUT</span>
-          <span className="text-md font-light text-gray-400">
+          <span className="text-sm font-light text-gray-500">
             <input
               type="text"
               placeholder="Add date"
-              className="outline-none bg-white w-[5rem] cursor-pointer"
+              className="outline-none bg-white w-[6rem] ml-6 cursor-pointer"
               disabled
               value={
                 endDate

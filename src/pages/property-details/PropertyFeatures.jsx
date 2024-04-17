@@ -213,9 +213,9 @@ const feature_Details = [
 
 function PropertyFeatures() {
   return (
-    <div className="my-[2rem] w-[40rem]">
+    <div style={{border: '3px solid red'}} className=" w-[96%] ml-3 mb-5">
       <div className="">
-        <span className="">What this place offers</span>
+        <span className="text-2xl font-semibold text-gray-600">What this place offers</span>
       </div>
 
       {/* Features */}
@@ -224,7 +224,7 @@ function PropertyFeatures() {
           <div key={idx} className="flex gap-4 my-1">
             <div className="">{icon}</div>
             <div className="">
-              <span className={`${cross ? " line-through" : null} text-lg`}>
+              <span className={`${cross ? " line-through" : null} text-lg text-gray-600 font-serif `}>
                 {title}
               </span>
             </div>

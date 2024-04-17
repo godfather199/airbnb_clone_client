@@ -73,14 +73,14 @@ function PropertyMainDetails() {
       {details_Info.map(({ icon, title, subtitle }, idx) => (
         <div key = {idx} className="flex gap-4 my-6">
           {/* Icon */}
-          <div className=" w-[3rem] h-[3rem] bg-gray-200 rounded-full flex items-center justify-center">
+          <div className=" w-[2.5rem] h-[2.5rem] bg-gray-200 rounded-full flex items-center justify-center">
             {icon}
           </div>
 
           {/* Info */}
           <div className="flex flex-col">
-            <span className="text-gray-800 text-xl font-medium">{title}</span>
-            <span className="text-gray-600 text-md font-light">{subtitle}</span>
+            <span className="text-gray-800 text-lg font-medium">{title}</span>
+            <span className="text-gray-600 text-sm font-light">{subtitle}</span>
           </div>
         </div>
       ))}

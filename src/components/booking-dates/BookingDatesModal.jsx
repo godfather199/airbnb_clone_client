@@ -8,6 +8,7 @@ import { Menu, MenuItem, Modal } from '@mui/material';
 import { addDays, eachDayOfInterval } from 'date-fns';
 import { useSelector } from 'react-redux';
 import { useBookedDates } from '../../hooks/useBookedDates';
+import { useResize } from '../../hooks/useResize';
 
 
 // const disabledRanges2 = [
@@ -28,6 +29,7 @@ function BookingDatesModal({
   const [startDate, endDate] = dateRange;
 
   const disabledRanges = useBookedDates(property?.bookings)
+  const {isSingleMonth} = useResize()
 
   // const [disabledRanges, setDisabledRanges] = useState()
   const [disablePreviousDates, setDisablePreviousDates] = useState(new Date())
@@ -99,6 +101,7 @@ function BookingDatesModal({
   return (
     <div>
       <Menu
+        // style={{ border: "3px solid black" }}
         id="basic-menu"
         anchorEl={anchorEl}
         // open={true}
@@ -111,13 +114,15 @@ function BookingDatesModal({
         PaperProps={{
           style: {
             padding: "0.7rem", // Adjust padding as needed
-            borderRadius: "0.8rem", // Adjust border radius as needed
+            borderRadius: "0.8rem", // Adjust border radius as needed,
+            // border: "3px solid purple",
           },
         }}
       >
         {/* Header */}
         <MenuItem
-          style={{ backgroundColor: "transparent" }}
+          // style={{ border: "3px solid green", backgroundColor: "transparent" }}
+          style={{  backgroundColor: "transparent" }}
           className="h-[6rem]"
           disableRipple
           // onClick={handle_Close_Calendar}
@@ -130,9 +135,10 @@ function BookingDatesModal({
 
         {/* Calendar */}
         <MenuItem
-          style={{ marginTop: "1rem" }}
+          // style={{border: '3px solid purple', marginTop: "1rem" }}
+          style={{ marginTop: "2rem" }}
           disableRipple
-          className="h-[21rem] flex justify-center"
+          className="h-[21rem] flex justify-center items-center"
         >
           <DatePicker
             selectsRange={true}
@@ -141,10 +147,11 @@ function BookingDatesModal({
             onChange={(update) => handle_Date_Change(update)}
             isClearable={true}
             inline
-            monthsShown={2}
+            monthsShown={isSingleMonth ? 1 : 2}
+            // monthsShown={2}
             dateFormat="dd/MM/yyyy"
             excludeDates={generateDisabledDates(disabledRanges)}
-            // excludeDates={generateDisabledDates(disabledRanges, startDate || endDate)} // GPT code 
+            // excludeDates={generateDisabledDates(disabledRanges, startDate || endDate)} // GPT code
             // excludeDates={generateDisabledDates(startDate, disabledRanges)} // Gemini code
             minDate={disablePreviousDates}
             maxDate={disableUpcomingDates}
@@ -161,8 +168,8 @@ function BookingDatesModal({
             <FooterDates
               handle_Date_Change={handle_Date_Change}
               handle_Close_Calendar={handle_Close_Calendar}
-              setDisablePreviousDates = {setDisablePreviousDates}
-              setDisableUpcomingDates = {setDisableUpcomingDates}
+              setDisablePreviousDates={setDisablePreviousDates}
+              setDisableUpcomingDates={setDisableUpcomingDates}
             />
           </div>
         </MenuItem>

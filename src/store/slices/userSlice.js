@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { thunk_Add_To_Whishlist, thunk_Login, thunk_Remove_From_Whishlist, thunk_property_From_Whishlist } from "../thunks/userThunk"
+import { thunk_Add_To_Whishlist, thunk_Login, thunk_Logout_User, thunk_Remove_From_Whishlist, thunk_Update_User_Info, thunk_property_From_Whishlist } from "../thunks/userThunk"
 import toast from "react-hot-toast"
 
 const initialState = {
@@ -19,9 +19,6 @@ export const userSlice = createSlice({
       reset_User_State: (state) => {
         state.is_Loading = false
         state.is_Success = false
-      },
-      handle_Logout: (state) => {
-        state.current_User = null
       },
       reset_Is_Success_Whishlist: (state) => {
         state.is_Success_Whishlist = false
@@ -83,12 +80,39 @@ export const userSlice = createSlice({
               position: 'bottom-center'
             })
           })
+          .addCase(thunk_Update_User_Info.pending, (state) => {
+            state.is_Loading = true
+          })
+          .addCase(thunk_Update_User_Info.fulfilled, (state, {payload}) => {
+            const {msg, updated_Info} = payload
+
+            state.is_Loading = true
+            state.is_Success = true
+            state.current_User = updated_Info
+            
+            toast.success(msg, {
+              duration: 2000,
+              position: 'bottom-center'
+            })
+          })
+          .addCase(thunk_Logout_User.fulfilled, (state, {payload}) => {
+            const {msg} = payload
+            
+            // state.is_Success = true
+            state.whishlist_Properties = []
+            state.current_User = null
+
+            toast.success(msg, {
+              duration: 2000,
+              position: 'bottom-center'
+            })
+          })
     }
 })
 
 
 
-export const { reset_User_State, handle_Logout, reset_Is_Success_Whishlist } =
+export const { reset_User_State, reset_Is_Success_Whishlist } =
   userSlice.actions;
 
 

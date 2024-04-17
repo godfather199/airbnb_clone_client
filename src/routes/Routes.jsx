@@ -1,6 +1,7 @@
 import {Nabvar} from '../components'
-import {Home, HostDashboard, StripeSuccess, StripeFailure, CreateProperty, PropertyDetails, Whishlist, Trips} from '../pages'
+import {Account, Home, HostDashboard, StripeSuccess, StripeFailure, CreateProperty, PropertyDetails, Whishlist, Trips} from '../pages'
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
+import ProtectedRoutes from './ProtectedRoutes';
 
 
 function Routes() {
@@ -14,11 +15,19 @@ function Routes() {
         },
         {
           path: "/hosting",
-          element: <HostDashboard />,
+          element: (
+            <ProtectedRoutes>
+              <HostDashboard />
+            </ProtectedRoutes>
+          ),
         },
         {
           path: "/new-property",
-          element: <CreateProperty />,
+          element: (
+            <ProtectedRoutes>
+              <CreateProperty />
+            </ProtectedRoutes>
+          ),
         },
         {
           path: "/property-details/:id",
@@ -26,11 +35,27 @@ function Routes() {
         },
         {
           path: "/whishlist",
-          element: <Whishlist />,
+          element: (
+            <ProtectedRoutes>
+              <Whishlist />
+            </ProtectedRoutes>
+          ),
         },
         {
           path: "/trips",
-          element: <Trips />,
+          element: (
+            <ProtectedRoutes>
+              <Trips />
+            </ProtectedRoutes>
+          ),
+        },
+        {
+          path: "/account",
+          element: (
+            <ProtectedRoutes>
+              <Account />
+            </ProtectedRoutes>
+          ),
         },
         {
           path: "/success",

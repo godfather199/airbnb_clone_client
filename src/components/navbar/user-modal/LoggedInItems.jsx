@@ -1,26 +1,14 @@
-import {LoginModal} from '../../'
+import { LoginModal } from "../../";
 import MenuItem from "@mui/material/MenuItem";
-import LoginIcon from '@mui/icons-material/Login';
-import { useState } from 'react';
+import LoginIcon from "@mui/icons-material/Login";
+import { useState } from "react";
 
-
-
-function LoggedInItems({handleClose}) {
-  const [openLogin, setOpenLogin] = useState(false);
-
-
-  const handle_Login_Open = (e) => {
-    // e.stopPropagation()
-    setOpenLogin(true);
-  };
-  
-  
-  
-  const handle_Login_Close = () => {
-    setOpenLogin(false);
-    handleClose()
-  };
-
+function LoggedInItems({
+  handle_Login_Open,
+  handle_Login_Close,
+  openLogin,
+  is_Loading,
+}) {
 
   return (
     <div>
@@ -58,6 +46,7 @@ function LoggedInItems({handleClose}) {
           openLogin={openLogin}
           handle_Login_Open={handle_Login_Open}
           handle_Login_Close={handle_Login_Close}
+          is_Loading={is_Loading}
         />
       </MenuItem>
     </div>

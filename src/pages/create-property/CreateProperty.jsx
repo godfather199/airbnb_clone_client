@@ -16,11 +16,11 @@ import { reset_Property } from '../../store/slices/propertySlice';
 // Designing : https://onaircode.com/wp-content/uploads/2019/10/responsive-registration-form-1024x693.jpg
 
 const schema = yup.object().shape({
-  title: yup.string().required("Title is required"),
-  location: yup.string().required("Location is required"),
-  distance: yup.string().required("Distance is required"),
-  price: yup.string().required("Price is required"),
-  category: yup.string().required("Category is required"),
+  title: yup.string().required("**Title is required"),
+  location: yup.string().required("**Location is required"),
+  distance: yup.number().typeError("**Distance must be a number").required("**Distance is required"),
+  price: yup.number().typeError("**Price must be a number").required("**Price is required"),
+  category: yup.string().required("**Category is required"),
 });
 
 
@@ -81,43 +81,58 @@ function CreateProperty() {
   };
 
   return (
-    <div className="">
-      <div className="">
+    <div
+      // style={{ border: "6px solid green" }}
+      className="w-[45rem] h-full mt-[2rem] border-4 border-red-600 rounded-lg "
+    >
+      <div className=" h-full ">
         {/* Form Heading */}
-        <div className="">
-          <span className="">Create New Property</span>
+        <div
+          // style={{ border: "3px solid purple" }}
+          className="flex items-center justify-center"
+        >
+          <span
+            // style={{ border: "3px solid purple" }}
+            className="text-3xl font-semibold text-white bg-red-600  p-3 rounded-sm w-[80%] text-center"
+          >
+            Create New Property
+          </span>
         </div>
 
         {/* Form Body */}
-        <div className="">
+        <div
+          // style={{ border: "3px solid purple" }}
+          className="h-[84%] mt-[3rem]"
+        >
           <form
-            className=""
+            // style={{ border: "3px solid green" }}
+            className="h-full flex flex-col justify-between p-[1rem]"
             onSubmit={handleSubmit(handle_Form_Submit)}
             autoComplete="off"
           >
             <InputTextField
-              icon={<TitleIcon />}
+              icon={<TitleIcon style={{ color: "red" }} />}
               field="Title"
               register={register}
               error={errors.title?.message}
             />
 
             <InputTextField
-              icon={<AddLocationIcon />}
+              icon={<AddLocationIcon style={{ color: "red" }} />}
               field="Location"
               register={register}
               error={errors.location?.message}
             />
 
             <InputTextField
-              icon={<ExploreIcon />}
+              icon={<ExploreIcon style={{ color: "red" }} />}
               field="Distance"
               register={register}
               error={errors.distance?.message}
             />
 
             <InputTextField
-              icon={<AccountBalanceIcon />}
+              icon={<AccountBalanceIcon style={{ color: "red" }} />}
               field="Price"
               register={register}
               error={errors.price?.message}
@@ -130,21 +145,32 @@ function CreateProperty() {
               control={control}
             />
 
-            <SelectField
-              register={register}
-              errors={errors.category?.message}
-            />
+            <div
+              // style={{ border: "3px solid purple" }}
+              className="flex items-center justify-around"
+            >
+              <SelectField
+                register={register}
+                errors={errors.category?.message}
+              />
 
-            {/* Image Upload */}
-            <UploadPhotos
-              selectedImages={selectedImages}
-              setSelectedImages={setSelectedImages}
-            />
+              {/* Image Upload */}
+              <UploadPhotos
+                selectedImages={selectedImages}
+                setSelectedImages={setSelectedImages}
+              />
+            </div>
 
             {/* Button */}
-            <div className="">
-              <button type="submit" className="">
-                Create
+            <div
+              // style={{ border: "3px solid purple" }}
+              className="flex items-center justify-center mt-[3rem]"
+            >
+              <button
+                type="submit"
+                className=" border-2 border-red-600 bg-white text-red-600 font-semibold text-lg   w-[80%] h-[3rem] rounded-[0.5rem] shadow-lg"
+              >
+                CREATE
               </button>
             </div>
           </form>

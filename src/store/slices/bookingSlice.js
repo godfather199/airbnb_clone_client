@@ -15,6 +15,9 @@ export const bookingSlice = createSlice({
     reducers: {
       reset_Booking_Success_State: (state) => {
         state.isSuccess = false
+      },
+      reset_Bookings_State: (state) => {
+        state.bookings = []
       }
     },
     extraReducers: (builder) => {
@@ -54,7 +57,7 @@ export const bookingSlice = createSlice({
 })
 
 
-export const {reset_Booking_Success_State} = bookingSlice.actions
+export const {reset_Bookings_State, reset_Booking_Success_State} = bookingSlice.actions
 
 
 export default bookingSlice.reducer

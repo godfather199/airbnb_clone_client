@@ -39,7 +39,7 @@ function Properties({tabValue}) {
     } else if (pathname === "/whishlist") {
       dispatch(thunk_property_From_Whishlist());
     } else {
-      dispatch(thunk_Fetch_All_Properties());
+      dispatch(thunk_Fetch_All_Properties()); 
     }
   }, [current_User]);
 

@@ -66,7 +66,7 @@ export default function GuestsDropdown({
     <div>
       <div
         // style={{ border: "3px solid red" }}
-        className="border border-gray-700 flex justify-between cursor-pointer rounded-[7px]"
+        className="border border-gray-700 flex justify-between cursor-pointer rounded-[7px] w-[89.5%] "
         onClick={handle_Menu_Click}
       >
         <div className="flex flex-col p-3 ml-6">

@@ -1,89 +1,85 @@
-import { Button } from '@mui/material';
-import React, {useCallback, useMemo, useState} from 'react';
-import {useDropzone} from 'react-dropzone';
-import DeleteIcon from '@mui/icons-material/Delete';
-
-
+import { Button } from "@mui/material";
+import React, { useCallback, useMemo, useState } from "react";
+import { useDropzone } from "react-dropzone";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const baseStyle = {
   flex: 1,
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  padding: '20px',
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  padding: "20px",
   borderWidth: 2,
   borderRadius: 2,
-  borderColor: '#eeeeee',
-  borderStyle: 'dashed',
-  backgroundColor: '#fafafa',
-  color: '#bdbdbd',
-  outline: 'none',
-  transition: 'border .24s ease-in-out'
+  borderColor: "#eeeeee",
+  borderStyle: "dashed",
+  backgroundColor: "#fafafa",
+  color: "#bdbdbd",
+  outline: "none",
+  transition: "border .24s ease-in-out",
 };
 
 const focusedStyle = {
-  borderColor: '#2196f3'
+  borderColor: "#2196f3",
 };
 
 const acceptStyle = {
-  borderColor: '#00e676'
+  borderColor: "#00e676",
 };
 
 const rejectStyle = {
-  borderColor: '#ff1744'
+  borderColor: "#ff1744",
 };
 
-export default function DragNDrop({selectedImages, setSelectedImages}) {
 
-    const onDrop = useCallback((acceptedFiles) => {
-      const selectedFilesArray = Array.from(acceptedFiles);
+export default function DragNDrop({ selectedImages, setSelectedImages }) {
+  const onDrop = useCallback((acceptedFiles) => {
+    // console.log("Inside onDrop ")
+    const selectedFilesArray = Array.from(acceptedFiles);
 
-      const imagesArray = [];
+    const imagesArray = [];
 
-      selectedFilesArray.forEach((file) => {
-        const reader = new FileReader();
+    selectedFilesArray.forEach((file) => {
+      const reader = new FileReader();
 
-        reader.onload = () => {
-          imagesArray.push(reader.result);
-          setSelectedImages((previousImages) =>
-            previousImages.concat(imagesArray)
-          );
-        };
+      reader.onload = () => {
+        imagesArray.push(reader.result);
+        setSelectedImages((previousImages) =>
+          previousImages.concat(imagesArray)
+        );
+      };
+      reader.readAsDataURL(file);
+    });
+  }, []);
 
-        reader.readAsDataURL(file);
-      });
 
-    }, []);
+  const { getRootProps, getInputProps, isFocused, isDragAccept, isDragReject } =
+    useDropzone({ onDrop, accept: { "image/*": [] } });
 
-  const {
-    getRootProps,
-    getInputProps,
-    isFocused,
-    isDragAccept,
-    isDragReject
-  } = useDropzone({onDrop, accept: {'image/*': []}});
+  const style = useMemo(
+    () => ({
+      ...baseStyle,
+      ...(isFocused ? focusedStyle : {}),
+      ...(isDragAccept ? acceptStyle : {}),
+      ...(isDragReject ? rejectStyle : {}),
+    }),
+    [isFocused, isDragAccept, isDragReject]
+  );
 
-  const style = useMemo(() => ({
-    ...baseStyle,
-    ...(isFocused ? focusedStyle : {}),
-    ...(isDragAccept ? acceptStyle : {}),
-    ...(isDragReject ? rejectStyle : {})
-  }), [
-    isFocused,
-    isDragAccept,
-    isDragReject
-  ]);
+
 
   function deleteHandler(image) {
     setSelectedImages(selectedImages.filter((e) => e !== image));
     URL.revokeObjectURL(image);
   }
 
+
+
   return (
     <div className="container">
-      <div {...getRootProps({ style })}>
+      <div {...getRootProps({ style })} className="">
         <input {...getInputProps()} />
-        <div style={{ border: "3px solid red" }} className="">
+        <div  className="">
           <svg
             viewBox="0 0 64 64"
             xmlns="http://www.w3.org/2000/svg"
@@ -105,27 +101,29 @@ export default function DragNDrop({selectedImages, setSelectedImages}) {
       </div>
 
       {selectedImages.length > 0 && (
-        <button>
+        <span className="text-lg text-gray-500 font-medium tracking-tighter mx-3">
           UPLOAD {selectedImages.length} IMAGE
           {selectedImages.length === 1 ? "" : "S"}
-        </button>
+        </span>
       )}
 
       <div className="grid grid-cols-3 gap-4 mt-5">
         {selectedImages &&
           selectedImages.map((image, index) => (
             <div
-              style={{ border: "3px solid red" }}
-              key={image}
+              // style={{ border: "3px solid red" }}
+              // key={image}
+              key={index}
               className="   p-2 mx-2"
             >
               <img
-                style={{ border: "3px solid green" }}
+                // style={{ border: "3px solid green" }}
                 src={image}
                 className="w-full h-[15rem] object-cover mb-3 rounded-md"
                 alt="upload"
               />
               <Button
+                className=" float-right"
                 // size="small"
                 variant="contained"
                 color="error"

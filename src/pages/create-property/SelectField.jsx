@@ -11,10 +11,11 @@ function SelectField({register, errors}) {
     <div className="">
       <select
         {...register("category")}
+        className="outline-none p-4 font-semibold text-lg  bg-red-600 text-white rounded-lg"
       >
         <option value="">Select a category</option>
         {category_Options.map((option) => (
-          <option key={option} value={option}>
+          <option key={option} value={option} className="bg-white text-red-600">
             {option}
           </option>
         ))}

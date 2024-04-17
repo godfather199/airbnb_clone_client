@@ -6,25 +6,25 @@ import SummarizeIcon from "@mui/icons-material/Summarize";
 import PersonSearchIcon from "@mui/icons-material/PersonSearch";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useDispatch, useSelector } from "react-redux";
-import { handle_Logout } from "../../../store/slices/userSlice";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
+import { thunk_Logout_User } from "../../../store/thunks/userThunk";
+import { reset_All_Properties } from "../../../store/slices/propertySlice";
+import { reset_Bookings_State } from "../../../store/slices/bookingSlice";
 
 
 
 function LoggedOutItems({handleClose}) {
   const dispatch = useDispatch()
 
-
+  const {is_Success} = useSelector(state => state.user)
 
   const logout_Func = () => {
-    dispatch(handle_Logout())
+    dispatch(thunk_Logout_User())
+    dispatch(reset_All_Properties())
+    dispatch(reset_Bookings_State())
     handleClose()
 
-    toast.success('User logged out successfully', {
-      duration: 2000,
-      position: 'bottom-center'
-    })
   }
   
 
@@ -72,14 +72,16 @@ function LoggedOutItems({handleClose}) {
         </MenuItem>
       </Link>
 
-      <MenuItem
-        // style={{ border: "3px solid green" }}
-        className="w-[15rem] h-[3.5rem] "
-        onClick={handleClose}
-      >
-        <PersonSearchIcon style={{ color: "red" }} />{" "}
-        <span className="ml-[0.7rem]">Account</span>
-      </MenuItem>
+      <Link to="/account">
+        <MenuItem
+          // style={{ border: "3px solid green" }}
+          className="w-[15rem] h-[3.5rem] "
+          onClick={handleClose}
+        >
+          <PersonSearchIcon style={{ color: "red" }} />{" "}
+          <span className="ml-[0.7rem]">Account</span>
+        </MenuItem>
+      </Link>
 
       <MenuItem
         // style={{ border: "3px solid green" }}

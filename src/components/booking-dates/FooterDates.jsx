@@ -14,7 +14,7 @@ function FooterDates({
   };
 
   return (
-    <div className="flex items-center">
+    <div className="flex items-center mb-3">
       <button
         className=" text-sm text-gray-800 font-semibold underline "
         onClick={handle_Clear_Dates}

@@ -20,6 +20,8 @@ const Transition = forwardRef(function Transition(props, ref) {
 
 
 
+
+
 export default function Filters() {
   const dispatch = useDispatch()
 
@@ -96,19 +98,32 @@ export default function Filters() {
         onClose={handle_Filter_Close}
         maxWidth="xl"
         // fullWidth
+        PaperProps={{
+          sx: {
+            borderRadius: "8px",
+            height: "32rem",
+          },
+        }}
       >
         <div
-          style={{ border: "3px solid red" }}
-          className="w-[50rem] h-[50rem]"
+          // style={{ border: "3px solid red" }}
+          className="w-[25rem] md:w-[35rem] lg:w-[50rem] h-[50rem] p-5 flex flex-col gap-5"
         >
           {/* Heading */}
-          <div style={{ border: "3px solid purple" }} className="">
+          <div
+            // style={{ border: "3px solid purple" }}
+            className="w-[53%]  flex items-center justify-between"
+          >
             <CloseIcon
               onClick={handle_Filter_Close}
-              style={{ cursor: "pointer" }}
+              style={{ cursor: "pointer", fontSize: "21px" }}
             />
-            <span className="">Filters</span>
+            <span className=" text-md font-bold text-gray-600 tracking-wide">
+              Filters
+            </span>
           </div>
+
+          <div className="border border-gray-300  w-[100%] my-1 " />
 
           {/* Price Filter */}
           <div className="">
@@ -118,6 +133,8 @@ export default function Filters() {
             />
           </div>
 
+          <div className="border border-gray-300  w-[100%] my-4 " />
+
           {/* Distance Filter */}
           <div className="">
             <DistanceFilter
@@ -126,14 +143,29 @@ export default function Filters() {
             />
           </div>
 
+          <div className="border border-gray-300  w-[100%] my-2" />
+
           {/* Footer */}
-          <div className="">
-            <button className="" onClick={handle_Clear_All}>
-              Clear All
+          <div
+            // style={{ border: "3px solid red" }}
+            className="flex items-center justify-between"
+          >
+            <button
+              className=" text-md font-semibold text-gray-700"
+              onClick={handle_Clear_All}
+            >
+              Clear all
             </button>
-            <button className="" onClick={handle_Filters}>
+            <Button
+              variant="contained"
+              color="primary"
+              size="large"
+              style={{ backgroundColor: "black", color: "white" }}
+              className=""
+              onClick={handle_Filters}
+            >
               Show Properties
-            </button>
+            </Button>
           </div>
         </div>
       </Dialog>

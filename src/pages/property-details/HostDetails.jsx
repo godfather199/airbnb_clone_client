@@ -5,50 +5,59 @@ function HostDetails({details}) {
   // console.log('Owner: ', details)
 
   return (
-    <div  className="">
-      <h1 className=" text-xl font-semibold text-gray-700">Meet your Host</h1>
+    <div style={{border: '3px solid purple'}} className="">
+      <h1 className=" text-2xl font-semibold text-gray-700 mb-4">
+        Meet your Host
+      </h1>
       <div
-        style={{ border: "3px solid red", backgroundColor: "#f0efe9" }}
-        className=" flex flex-col gap-10 items-center justify-center w-[40rem] p-3"
+        // style={{ border: "3px solid red" }}
+        className=" flex flex-col gap-10 bg-red-50 items-center justify-center   p-7 rounded-[0.8rem] shadow-lg"
       >
         {/* Host card */}
         <div
           // style={{ border: "3px solid purple" }}
-          className="  bg-white flex items-center justify-center w-[23rem] h-[15rem] rounded-[2.2rem]   shadow-lg"
+          className="  bg-white flex items-center justify-center mr-[4rem]  w-[19rem] h-[7.8rem] rounded-[0.4rem] shadow-lg"
         >
-          <div className="">
+          <div
+            // style={{ border: "3px solid purple" }}
+            className="w-full flex items-center justify-around"
+          >
             {/* Host image */}
             <div className="">
               {details?.user_Avatar?.url ? (
                 <>
-                  <img src={details?.user_Avatar?.url} alt="" className="" />
+                  <img
+                    src={details?.user_Avatar?.url}
+                    alt=""
+                    className="w-[5rem] h-[5rem] object-cover rounded-full"
+                  />
                 </>
               ) : (
-                <AccountCircleIcon style={{ fontSize: "7rem" }} />
+                <AccountCircleIcon style={{ fontSize: "4rem" }} />
               )}
             </div>
 
             {/* Host name & email */}
-            <div className="flex flex-col">
-              <span className="text-lg font-medium text-gray-800">
+            <div className="flex flex-col gap-1">
+              <span className="text-xl font-semibold text-gray-600">
                 {details?.name}
               </span>
-              <span className="text-lg font-medium text-gray-800">
+              <span className="text-sm font-medium text-gray-400">
                 {details?.email}
               </span>
-              <span className="text-md font-medium text-gray-800 mt-5">
+              {/* <span className="text-md font-medium text-gray-800 mt-5">
                 Host
-              </span>
+              </span> */}
             </div>
           </div>
         </div>
 
         {/* Host Details */}
         <div
-          style={{ border: "5px solid orange" }}
+          // style={{ border: "5px solid orange" }}
           className="w-[23rem]  flex flex-col  gap-5 "
         >
-          <div className="flex flex-col gap-5 text-md font-medium text-gray-700">
+          <div className="flex flex-col  gap-5 text-md font-medium text-gray-400">
             <div className="flex items-center ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -94,9 +103,15 @@ function HostDetails({details}) {
           </div>
 
           {/* About */}
-          <div style={{border: '3px solid blue'}} className="text-large font-medium text-gray-500 tracking-wider">
+          <div
+            // style={{ border: "3px solid blue" }} 
+            className=" text-lg font-serif text-gray-400 h-[10rem] tracking-tighter p-1 "
+          >
             <span className="">
-              {`Hello Explorer, I am ${details?.name}. Food, travel and music are the 3 best words to describe me. I am always excited to host people, and share stories and experiences. Feel free to reach out to me for any queries and I will reply to you at the earliest.`}
+              {`Hello Explorer, I am ${details?.name}. Food, travel and music are
+              the 3 best words to describe me. I am always excited to host
+              people, and share stories and experiences. Feel free to reach out
+              to me for any queries and I will reply to you at the earliest.`}
             </span>
           </div>
         </div>

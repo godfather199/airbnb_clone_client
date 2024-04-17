@@ -14,18 +14,18 @@ function HeaderDates({ handle_Date_Change, dateRange }) {
   return (
     <div
       // style={{ border: "3px solid purple" }}
-      className=" w-[38rem] h-[5rem] flex justify-between"
+      className=" w-[38rem] h-[5rem] flex flex-col md:flex-row  items-center justify-between gap-3"
     >
       <div className="flex flex-col">
-        <span className="  text-xl font-semibold text-gray-700">
+        <span className="  text-2xl font-semibold text-gray-700">
           {dateRange[0] && dateRange[1]
             ? `${differenceInCalendarDays(endDate, startDate) + 1} nights`
             : "Select dates"}
         </span>
         <span
           className={`${
-            dateRange[0] && dateRange[1] ? "text-sm mt-2" : "text-md"
-          } font-extralight text-gray-400`}
+            dateRange[0] && dateRange[1] ? "text-md mt-2" : "text-md text-gray-400"
+          } font-medium text-gray-500`}
         >
           {dateRange[0] && dateRange[1]
             ? `${format(dateRange[0], "dd MMM yyyy")} - ${format(
@@ -40,16 +40,17 @@ function HeaderDates({ handle_Date_Change, dateRange }) {
       <div className="flex items-center ">
         {/* Checkin */}
         <div
-          // style={{ border: "3px solid orange" }}
+          // style={{ border: "3px solid red" }}
           className={`border ${
             dateRange[0] === null || dateRange[0] === undefined
               ? "border-[3px] border-black"
               : "border-gray-400"
-          }  flex w-[9rem] h-[3.8rem] p-2 rounded-lg relative`}
+          }  flex w-[10rem] h-[3.8rem] p-2 rounded-lg relative`}
         >
           <div className="flex flex-col items-center justify-center gap-0.7">
             <span className="text-xs font-semibold">CHECK-IN</span>
             <input
+              // style={{border: '3px solid orange'}}
               type="text"
               value={
                 startDate
@@ -58,7 +59,7 @@ function HeaderDates({ handle_Date_Change, dateRange }) {
               }
               onChange={() => {}}
               placeholder="Add date"
-              className=" ml-5 outline-none w-[5rem] bg-white"
+              className=" ml-5 outline-none w-[6rem] bg-white text-sm text-gray-500"
               disabled={true}
             />
           </div>
@@ -68,7 +69,7 @@ function HeaderDates({ handle_Date_Change, dateRange }) {
                 cursor: "pointer",
                 position: "absolute",
                 top: "1.2rem",
-                right: "0.4rem",
+                right: "1rem",
                 fontSize: "1.2rem",
               }}
               onClick={() => handle_Date_Change("")}
@@ -83,7 +84,7 @@ function HeaderDates({ handle_Date_Change, dateRange }) {
             dateRange[0] === null || dateRange[0] === undefined
               ? "bg-gray-300 opacity-50 border-gray-500"
               : "bg-white border-black"
-          }  flex w-[9rem] h-[3.8rem] p-2 rounded-lg relative`}
+          }  flex w-[10rem] h-[3.8rem] p-2 rounded-lg relative`}
         >
           <div className="flex flex-col items-center justify-center gap-1">
             <span
@@ -106,7 +107,7 @@ function HeaderDates({ handle_Date_Change, dateRange }) {
               }
               onChange={() => {}}
               placeholder="Add date"
-              className="ml-5 outline-none w-[5rem] "
+              className="ml-5 outline-none w-[6rem] text-sm text-gray-500 "
             />
           </div>
           {endDate && (
@@ -115,7 +116,7 @@ function HeaderDates({ handle_Date_Change, dateRange }) {
                 cursor: "pointer",
                 position: "absolute",
                 top: "1.2rem",
-                right: "0.4rem",
+                right: "1rem",
                 fontSize: "1.2rem",
               }}
               onClick={() => handle_Date_Change("")}
