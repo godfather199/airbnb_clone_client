@@ -49,14 +49,35 @@ export default function HostDashboardTabs() {
 
   return (
     <div style={{ width: "100%" }}>
-      <div style={{ borderBottom: 1, borderColor: "divider" }}>
+      <div
+        style={{
+          // border: "3px solid red",
+          borderBottom: 1,
+          borderColor: "divider",
+         
+        }}
+      >
         <Tabs
           value={value}
           onChange={handleChange}
           aria-label="basic tabs example"
+          sx={{
+            // border: "3px solid purple",
+            marginBottom: "3rem",
+            marginLeft: '3rem',
+            width: "22rem",
+          }}
         >
-          <Tab label="All Properties" {...a11yProps(0)} />
-          <Tab label="Currently Hosted" {...a11yProps(1)} />
+          <Tab
+            label="All Properties"
+            {...a11yProps(0)}
+            sx={{ backgroundColor: "red" }}
+          />
+          <Tab
+            label="Hosted Properties"
+            {...a11yProps(1)}
+            sx={{ backgroundColor: "yellow" }}
+          />
         </Tabs>
       </div>
 

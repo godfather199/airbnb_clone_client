@@ -7,7 +7,7 @@ import PersonSearchIcon from "@mui/icons-material/PersonSearch";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useDispatch, useSelector } from "react-redux";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { thunk_Logout_User } from "../../../store/thunks/userThunk";
 import { reset_All_Properties } from "../../../store/slices/propertySlice";
 import { reset_Bookings_State } from "../../../store/slices/bookingSlice";
@@ -16,6 +16,7 @@ import { reset_Bookings_State } from "../../../store/slices/bookingSlice";
 
 function LoggedOutItems({handleClose}) {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const {is_Success} = useSelector(state => state.user)
 
@@ -24,7 +25,7 @@ function LoggedOutItems({handleClose}) {
     dispatch(reset_All_Properties())
     dispatch(reset_Bookings_State())
     handleClose()
-
+    navigate('/')
   }
   
 

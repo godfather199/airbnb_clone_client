@@ -32,7 +32,7 @@ export default function UserModal() {
         handle_Login_Close();
         // reset();
         dispatch(reset_User_State());
-      }, 3000);
+      }, 1700);
     }
   }, [is_Success]);
     

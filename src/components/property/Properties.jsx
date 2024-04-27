@@ -1,4 +1,4 @@
-import {Property, SkeletonProperty} from '../'
+import {Property, SkeletonProperty, NoItemsFound} from '../'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import {
@@ -54,13 +54,17 @@ function Properties({tabValue}) {
           .map((item, idx) => <SkeletonProperty key={idx} />)
       ) : (
         <div
-          // style={{ border: "3px solid green" }}
-          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10"
+        // style={{ border: "3px solid green" }}
         >
-          {properties?.map((item) => (
-            <Property key={item?._id} property={item} />
-            // <Property property={properties[0]} />
-          ))}
+          {properties.length === 0 ? (
+            <NoItemsFound title = 'Whishlist' />
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
+              {properties?.map((item) => (
+                <Property key={item?._id} property={item} />
+              ))}
+            </div>
+          )}
         </div>
       )}
     </div>

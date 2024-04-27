@@ -36,13 +36,13 @@ function StripeSuccess() {
 
   return (
     <div className="">
-      {property && (
+      {property && booking && (
         <div className="flex items-center justify-around">
           <Property property={property} />
           <BookingAmount
-            guests={booking.guests}
-            dateRange={[booking.checkIn, booking.checkOut]}
-            cost={property.price}
+            guests={booking?.guests}
+            dateRange={[booking?.checkIn, booking?.checkOut]}
+            cost={property?.price}
             stripeSuccess = {true}
           />
         </div>

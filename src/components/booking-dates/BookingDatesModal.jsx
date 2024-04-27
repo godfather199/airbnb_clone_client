@@ -40,7 +40,7 @@ function BookingDatesModal({
   // console.log('Start Date: ', startDate)
   // console.log('End Date: ', endDate)
   // console.log('Date Range: ', dateRange)
-  console.log('Disabled Ranges: ', disabledRanges)
+  // console.log('Disabled Ranges: ', disabledRanges)
   
 
   // Calculate dates to be disabled

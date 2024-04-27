@@ -60,7 +60,6 @@ export default function LoginModal({
 
 
   const handle_Login_Submit = (value) => {
-    console.log('handle_Login_Submit ran')
      dispatch(thunk_Login(value));
    };
 
@@ -73,6 +72,7 @@ export default function LoginModal({
 
       {/* Login dialog */}
       <Dialog
+        // open={true}
         open={openLogin}
         TransitionComponent={Transition}
         keepMounted

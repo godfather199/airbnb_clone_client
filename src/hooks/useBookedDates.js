@@ -30,12 +30,3 @@ const format_Dates = (dateString) => {
 };
 
 
-// use date-fns to convert '21/03/2024' into new Date(2024, 3, 21) format
-
-// const dateString = '21/03/2024';
-// const [day, month, year] = dateString.split('/').map(Number);
-
-// // Subtract 1 from the month because months are zero-based in JavaScript Date objects
-// const dateObject = parse(`${year}-${month}-${day}`, 'yyyy-MM-dd', new Date());
-
-// console.log(dateObject); // Output: 2024-04-21T00:00:00.000Z

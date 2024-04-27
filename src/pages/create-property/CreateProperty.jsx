@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { thunk_New_Property } from '../../store/thunks/propertyThunk';
 import { reset_Property } from '../../store/slices/propertySlice';
+import { CircularProgress } from '@mui/material';
 
 // Designing : https://onaircode.com/wp-content/uploads/2019/10/responsive-registration-form-1024x693.jpg
 
@@ -168,9 +169,12 @@ function CreateProperty() {
             >
               <button
                 type="submit"
-                className=" border-2 border-red-600 bg-white text-red-600 font-semibold text-lg   w-[80%] h-[3rem] rounded-[0.5rem] shadow-lg"
+                disabled={isLoading}
+                className={`border-2 border-red-600 bg-white text-red-600 font-semibold text-lg   w-[80%] h-[3rem] rounded-[0.5rem] shadow-lg ${
+                  isLoading ? " cursor-not-allowed" : "cursor-pointer"
+                }`}
               >
-                CREATE
+                {isLoading ? <CircularProgress  /> : "CREATE"}
               </button>
             </div>
           </form>

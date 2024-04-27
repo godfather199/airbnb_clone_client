@@ -27,6 +27,7 @@ export const fetch_Booked_Property_Service = async () => {
     const {data} = await axios.get(
       `/api/booking/hosted-properites`
     )
+
   
     return data
   }

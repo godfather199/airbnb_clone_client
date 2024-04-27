@@ -100,42 +100,53 @@ function Account() {
 
 
   return (
-    <div className="">
-      {/* Heading & welcome message */}
-      <HeadingContent name={current_User?.name} />
+    <div
+      style={{ border: "3px solid purple" }}
+      className="w-[60rem] h-[48rem] flex  justify-center mb-10"
+    >
+      <div
+        // style={{ border: "3px solid green" }}
+        className="h-[30rem] flex flex-col gap-7 mt-[1rem]"
+      >
+        {/* Heading & welcome message */}
+        <HeadingContent name={current_User?.name} />
 
-      {/* Edit info form  */}
-      <form className="" onSubmit={handleSubmit(handle_Edit_Changes)}>
-        <TextEditField
-          field_Value={field_Array[0]}
-          register={register}
-          errors={errors.name?.message}
-        />
+        {/* Edit info form  */}
+        <form
+          className="flex flex-col gap-10"
+          onSubmit={handleSubmit(handle_Edit_Changes)}
+        >
+          <TextEditField
+            field_Value={field_Array[0]}
+            register={register}
+            errors={errors.name?.message}
+          />
 
-        <TextEditField
-          field_Value={field_Array[1]}
-          register={register}
-          errors={errors.email?.message}
-        />
+          <TextEditField
+            field_Value={field_Array[1]}
+            register={register}
+            errors={errors.email?.message}
+          />
 
-        <TextEditField
-          label="Update Password"
-          preFilledValue={editPassword}
-          editValue={setEditPassword}
-        />
+          <TextEditField
+            label="Update Password"
+            preFilledValue={editPassword}
+            editValue={setEditPassword}
+          />
 
-        <DisplayPhoto
-          displayPhoto={displayPhoto}
-          setDisplayPhoto={setDisplayPhoto}
-          photo = {current_User?.user_Avatar?.url}
-          handle_Image_Upload = {handle_Image_Upload}
-        />
+          <DisplayPhoto
+            displayPhoto={displayPhoto}
+            setDisplayPhoto={setDisplayPhoto}
+            photo={current_User?.user_Avatar?.url}
+            handle_Image_Upload={handle_Image_Upload}
+          />
 
-        {/* Save button */}
-        <button type="submit" className="">
-          Save
-        </button>
-      </form>
+          {/* Save button */}
+          <button type="submit" className="">
+            Save
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

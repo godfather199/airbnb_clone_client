@@ -12,11 +12,14 @@ function DisplayPhoto({
   // console.log('Photo: ', photo)
   // console.log('Display photo: ', displayPhoto)
   return (
-    <div className="">
+    <div
+      // style={{ border: "3px solid purple" }}
+      className=" border-2 border-gray-400 w-[30rem] bg-gray-100 p-6 flex items-center justify-around rounded-[15px] shadow-lg"
+    >
       {/* Display current pic */}
-      {photo && displayPhoto === '' && (
+      {photo && displayPhoto === "" && (
         <img
-          src={photo?.url}
+          src={photo}
           alt=""
           className="h-[10rem] w-[10rem] object-cover rounded-full"
         />
@@ -25,7 +28,7 @@ function DisplayPhoto({
       {/* Upload new pic */}
       <div className="">
         {displayPhoto ? (
-          <div style={{ border: "3px solid red" }} className="flex">
+          <div  className="flex">
             <img
               src={displayPhoto}
               alt=""
@@ -39,7 +42,7 @@ function DisplayPhoto({
         ) : (
           <div className="">
             <label className="cursor-pointer">
-              <UploadFileIcon />
+              <UploadFileIcon style= {{fontSize: '4rem'}} />
               <input
                 type="file"
                 accept="images/*"

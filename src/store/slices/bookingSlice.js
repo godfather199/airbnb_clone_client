@@ -42,17 +42,31 @@ export const bookingSlice = createSlice({
             const { msg, users_Bookings } = payload;
 
             state.isLoading = false;
-            state.bookings = users_Bookings
+            state.isSuccess = true;
+            state.bookings = users_Bookings;
           })
           .addCase(thunk_Logged_In_User_Hosted_Property.pending, (state) => {
-            state.isLoading = true
+            state.isLoading = true;
           })
-          .addCase(thunk_Logged_In_User_Hosted_Property.fulfilled, (state, {payload}) => {
-            const {msg, filter_Booked_Properties} = payload
-    
-            state.isLoading = false
-            state.bookings = filter_Booked_Properties[0].property_Bookings
-          })
+          .addCase(
+            thunk_Logged_In_User_Hosted_Property.fulfilled,
+            (state, { payload }) => {
+              const { msg, filter_Booked_Properties } = payload;
+
+              state.isLoading = false;
+              // state.bookings = filter_Booked_Properties[0].property_Bookings
+
+              // state.bookings = filter_Booked_Properties.map(({property_Bookings}) => property_Bookings[0])
+
+              let fetched_Bookings = []
+
+              filter_Booked_Properties.map(({ property_Bookings }) => {
+                property_Bookings.map((item) => fetched_Bookings.push(item));
+              });
+
+              state.bookings = fetched_Bookings
+            }
+          );
     }
 })
 

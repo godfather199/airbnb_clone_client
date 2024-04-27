@@ -36,40 +36,41 @@ function TextEditField({
 
 
   return (
-    <div className="">
+    <div className=" flex flex-col ">
       <div
-        style={{ border: "3px solid red" }}
-        className="w-[30rem] grid grid-cols-3"
+        // style={{ border: "3px solid red" }}
+        className=" border-2 border-gray-300 w-[30rem] grid grid-cols-3 items-center rounded-md shadow-lg p-3"
+        // className=" border-2 border-gray-400 w-[30rem] flex items-center justify-around rounded-sm shadow-lg p-2"
       >
-        {/* Text label */}
-        <span className="">{label ? label : field_Value.label}</span>
+          {/* Text label */}
+          <span className="text-lg font-mono text-red-500">{label ? label : field_Value.label}</span>
 
-        {/* Pre-filled input field */}
-        {label === "Update Password" ? (
-          <input
-            type={`${showPassword ? "text" : "password"}`}
-            className={`${
-              editField
-                ? "outline-none border-2 border-gray-500 p-5"
-                : "cursor-not-allowed  pointer-events-none appearance-none"
-            }`}
-            value={preFilledValue}
-            onChange={(e) => editValue(e.target.value)}
-          />
-        ) : (
-          <input
-            type="text"
-            className={`${
-              editField
-                ? "outline-none border-2 border-gray-500 p-5"
-                : "cursor-not-allowed  pointer-events-none appearance-none"
-            }`}
-            readOnly={!editField}
-            {...register(`${field_Value.value}`)}
-          />
-        )}
+          {/* Pre-filled input field */}
+          {label === "Update Password" ? (
+            <input
+              type={`${showPassword ? "text" : "password"}`}
+              className={` text-sm font-semibold text-gray-500 ${
+                editField
+                  ? "outline-none border-2 border-gray-500 p-3 rounded-lg bg-gray-100"
+                  : "cursor-not-allowed  pointer-events-none appearance-none"
+              }`}
+              value={preFilledValue}
+              onChange={(e) => editValue(e.target.value)}
+            />
+          ) : (
+            <input
+              type="text"
+              className={` text-sm font-semibold text-gray-500 ${
+                editField
+                  ? "outline-none border-2 border-gray-500 p-3 rounded-lg bg-gray-100"
+                  : "cursor-not-allowed  pointer-events-none appearance-none"
+              }`}
+              readOnly={!editField}
+              {...register(`${field_Value.value}`)}
+            />
+          )}
 
-        <div className="">
+        <div className="ml-[4rem]">
           {/* Edit button */}
           <IconButton onClick={() => setEditField(!editField)} color="primary">
             <EditIcon />
