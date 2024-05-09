@@ -17,7 +17,7 @@ function SubtitleField({ register, errors, control }) {
         <li
           // style={{ border: "3px solid green" }}
           key={field.id}
-          className=" w-[70%] list-none my-6 flex items-center justify-between"
+          className=" w-[25rem] md:w-[70%] list-none my-6 flex items-center justify-between"
         >
           <input
             {...register(`subtitle.${idx}`)}

@@ -5,7 +5,7 @@ function HostDetails({details}) {
   // console.log('Owner: ', details)
 
   return (
-    <div style={{border: '3px solid purple'}} className="">
+    <div className="">
       <h1 className=" text-2xl font-semibold text-gray-700 mb-4">
         Meet your Host
       </h1>

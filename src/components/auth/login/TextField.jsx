@@ -4,13 +4,14 @@ import {ShowHidePassword} from '../../'
 
 function TextField({register, field, errors}) {
   const [showPassword, setShowPassword] = useState(false);
-  console.log('Password: ', showPassword)
+  // console.log('Password: ', showPassword)
 
   return (
     <div
+      // style={{border: '3px solid green'}}
       className={`border ${
         errors ? "border-2 border-red-600" : "border-gray-400"
-      }  w-[28rem] p-4 rounded-lg flex flex-col`}
+      }  w-[25rem] sm:w-[28rem] p-4 rounded-lg flex flex-col`}
     >
       <div className="flex items-center justify-between">
         <input

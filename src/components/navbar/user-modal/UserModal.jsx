@@ -16,12 +16,17 @@ export default function UserModal() {
   const [openLogin, setOpenLogin] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
 
+  // Register modal
+  const [openRegister, setOpenRegister] = useState(false)
+  // const [registeranchorEl, setRegisterAnchorEl] = useState(null)
 
-  const { current_User, is_Loading, is_Success } = useSelector(
+
+  const { is_Loading, current_User, is_Success } = useSelector(
     (state) => state.user
   );
   
   const open = Boolean(anchorEl);
+  // const registerOpen = Boolean(registeranchorEl)
 
 
    // User login successfull
@@ -35,7 +40,20 @@ export default function UserModal() {
       }, 1700);
     }
   }, [is_Success]);
-    
+  
+
+  
+  // User register successfull
+  useEffect(() => {
+    if (is_Success) {
+      setTimeout(() => {
+        handle_Register_Close();
+        // handle_Login_Open()
+        // reset();
+        dispatch(reset_User_State());
+      }, 1700);
+    }
+  }, [is_Success]);
 
 
 
@@ -61,6 +79,21 @@ export default function UserModal() {
   // LoggedInItems
   const handle_Login_Close = () => {
     setOpenLogin(false);
+    handleClose();
+  };
+
+  
+  // Register modal
+  const handle_Register_Open = (e) => {
+    // e.stopPropagation()
+    setOpenRegister(true);
+  };
+  
+  
+  
+  // Register modal
+  const handle_Register_Close = () => {
+    setOpenRegister(false)
     handleClose();
   };
 
@@ -99,6 +132,9 @@ export default function UserModal() {
             handle_Login_Open = {handle_Login_Open}
             handle_Login_Close = {handle_Login_Close}
             is_Loading = {is_Loading}
+            openRegister = {openRegister}
+            handle_Register_Open = {handle_Register_Open}
+            handle_Register_Close = {handle_Register_Close}
           />
         ) : (
           <LoggedOutItems handleClose={handleClose} />

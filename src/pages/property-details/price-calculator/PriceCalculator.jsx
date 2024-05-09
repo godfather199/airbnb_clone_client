@@ -14,8 +14,8 @@ function PriceCalculator({cost}) {
 
   const {property} = useSelector(state => state.property)
   const {current_User} = useSelector(state => state.user)
-  console.log('Current user: ', current_User)
-  console.log('Property: ', property)
+  // console.log('Current user: ', current_User)
+  // console.log('Property: ', property)
 
   const [dateRange, setDateRange] = useState([null, null]);
   const [anchorEl, setAnchorEl] = useState(null);
@@ -60,13 +60,13 @@ function PriceCalculator({cost}) {
   return (
     <div
       // style={{ border: "3px solid purple" }}
-      className="flex flex-col  gap-4 p-5 border-2 border-gray-300 shadow-gray-400 shadow-lg relative w-[25rem] h-[20rem] mb-5 ml-[0.8rem] rounded-[0.4rem]"
+      className="flex flex-col  gap-4 p-5 border-2 border-gray-300 shadow-gray-400 shadow-lg relative w-[25rem] h-[19.5rem] mb-5 ml-[0.8rem] rounded-[0.6rem]"
     >
       {/* Show a message to the owner of the property */}
       {userIsOwner && (
         <div
           // style={{ border: "3px solid red" }}
-          className="w-[20.2rem] h-[8rem]  absolute top-20 left-[1.6rem] bg-white"
+          className="w-[22rem] h-[12rem]  absolute top-3 left-[1.1rem] bg-white"
         >
           <div className=" mt-[2rem]">
             <span className=" text-2xl text-gray-500 font-semibold ">
@@ -111,7 +111,10 @@ function PriceCalculator({cost}) {
       <div className="mt-2">
         {dateRange[0] && dateRange[1] ? (
           <button
-            className=" bg-red-600 text-white h-[3.9rem] text-2xl font-semibold w-[89.5%]  rounded-[0.7rem] shadow-black"
+            className={`bg-red-600 text-white h-[3.9rem] text-2xl font-semibold w-[89.5%]  rounded-[0.7rem] shadow-black ${
+              current_User === null ? " cursor-not-allowed" : " cursor-pointer"
+            }`}
+            disabled={current_User === null}
             onClick={handle_Checkout_Page}
           >
             Reserve
@@ -130,7 +133,10 @@ function PriceCalculator({cost}) {
       </div>
 
       {/* Final Booking Price */}
-      <div className="">
+      <div
+        // style={{ border: "3px solid green" }}
+        className=" absolute right-[0px] top-[20rem]"
+      >
         {dateRange[0] && dateRange[1] && (
           <BookingAmount dateRange={dateRange} cost={cost} />
         )}

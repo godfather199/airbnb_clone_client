@@ -53,7 +53,7 @@ function PropertyDetails() {
       <div className="flex flex-col lg:flex-row relative">
         <div className="">
           {/* Location sub-details */}
-          <div style={{ border: "3px solid red" }} className="ml-3">
+          <div  className="ml-3">
             <PropertySubDetails subDetails={property?.subtitle} />
           </div>
 
@@ -90,7 +90,7 @@ function PropertyDetails() {
         </div>
 
         {/* Price Calculator */}
-        <div className=" lg:sticky lg:top-[7rem] lg:self-start  lg:mt-2">
+        <div className=" lg:sticky lg:top-[6rem] lg:self-start  lg:mt-2">
           <PriceCalculator cost={property?.price} />
         </div>
       </div>

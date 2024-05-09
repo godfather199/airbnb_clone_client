@@ -1,5 +1,17 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { add_To_Whishlist_Service, login_Service, logout_User_Service, properties_From_Whishlist_Service, remove_From_Whishlist_Service, update_User_Info_Service } from "../../services/userService";
+import { add_To_Whishlist_Service, login_Service, logout_User_Service, properties_From_Whishlist_Service, register_Service, remove_From_Whishlist_Service, update_User_Info_Service } from "../../services/userService";
+
+
+
+export const thunk_Register = createAsyncThunk(
+    'user/register', async (info, thunkAPI) => {
+        try {
+            return await register_Service(info)
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.response.data.message)
+        }
+    }
+)
 
 
 

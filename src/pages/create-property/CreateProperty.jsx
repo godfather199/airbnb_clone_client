@@ -84,7 +84,7 @@ function CreateProperty() {
   return (
     <div
       // style={{ border: "6px solid green" }}
-      className="w-[45rem] h-full mt-[2rem] border-4 border-red-600 rounded-lg "
+      className="w-[29rem] sm:w-[38rem] md:w-[45rem] h-full mt-[2rem] border-4 border-red-600 rounded-lg mb-5"
     >
       <div className=" h-full ">
         {/* Form Heading */}

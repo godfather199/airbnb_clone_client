@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import toast from 'react-hot-toast';
 import { thunk_Update_User_Info } from '../../store/thunks/userThunk';
+import { CircularProgress } from '@mui/material';
 
 
 const schema = yup.object().shape({
@@ -36,12 +37,12 @@ const field_Array = [
 function Account() {
   const dispatch = useDispatch()
 
-  const { current_User } = useSelector((state) => state.user);
-  
+  const { current_User, is_Loading } = useSelector((state) => state.user);
 
   const [editPassword, setEditPassword] = useState('')
   const [displayPhoto, setDisplayPhoto] = useState('')
   
+
 
   const {
     register,
@@ -102,11 +103,11 @@ function Account() {
   return (
     <div
       style={{ border: "3px solid purple" }}
-      className="w-[60rem] h-[48rem] flex  justify-center mb-10"
+      className="w-[60rem] h-[56rem]  flex  justify-center mb-10"
     >
       <div
         // style={{ border: "3px solid green" }}
-        className="h-[30rem] flex flex-col gap-7 mt-[1rem]"
+        className=" h-[53rem] flex flex-col gap-9 mt-[1rem] p-8 border-2 border-gray-200 shadow-lg rounded-lg "
       >
         {/* Heading & welcome message */}
         <HeadingContent name={current_User?.name} />
@@ -142,8 +143,12 @@ function Account() {
           />
 
           {/* Save button */}
-          <button type="submit" className="">
-            Save
+          <button
+            type="submit"
+            disabled={is_Loading}
+            className="bg-red-500 text-white p-3 text-2xl font-semibold rounded-lg shadow-lg"
+          >
+            {is_Loading ? <CircularProgress style={{color: 'white'}} /> : "Save"}
           </button>
         </form>
       </div>

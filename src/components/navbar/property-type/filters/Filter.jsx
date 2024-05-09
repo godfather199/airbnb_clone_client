@@ -86,7 +86,7 @@ export default function Filters() {
 
   return (
     <>
-      <button className="" onClick={handle_Filter_Open}>
+      <button className="flex items-center justify-center" onClick={handle_Filter_Open}>
         <FilterAltIcon />
         Filters
       </button>

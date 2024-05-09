@@ -1,10 +1,14 @@
-import {TripCard} from '../'
+import {TripCard, TripsBadge} from '../'
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { useState } from 'react';
+import { Badge} from '@mui/material';
+import {styled} from '@mui/system'
+
+
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -52,12 +56,19 @@ export default function TripsSort({
     setValue(newValue);
   };
 
+
   return (
-    <div className="">
+    <div className=" relative">
       {/* Heading  */}
       <div className="">
         <span className=" text-2xl text-red-500 font-bold">TRIPS</span>
       </div>
+
+      <TripsBadge
+        ongoingTrips={ongoingTrips}
+        upcomingTrips={upcomingTrips}
+        previousTrips={previousTrips}
+      />
 
       {/* Navigation buttons */}
       <div style={{ width: "100%" }}>
@@ -68,10 +79,13 @@ export default function TripsSort({
             aria-label="basic tabs example"
             sx={{
               // border: "3px solid purple",
-              marginBottom: "1.5rem",
-              marginTop: '1rem'
+              marginBottom: "0.8rem",
+              marginTop: "2rem",
               // marginLeft: '3rem',
-              // width: "22rem",
+              // // width: "22rem",
+              // height: "5rem",
+              // padding: "1rem",
+              // position: 'relative'
             }}
           >
             <Tab
@@ -80,11 +94,18 @@ export default function TripsSort({
               {...a11yProps(0)}
               // sx={{ backgroundColor: "black" }}
             />
+
             <Tab
-              sx={{ background: "red" }}
+              sx={{
+                background: "red",
+                // height: "5rem",
+                // width: "12rem",
+                zIndex: 1,
+              }}
               label="Upcoming  Trips"
               {...a11yProps(1)}
             />
+
             <Tab
               sx={{ background: "orange" }}
               label="Previous Trips"

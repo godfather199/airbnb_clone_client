@@ -4,9 +4,9 @@ import toast from 'react-hot-toast'
 import { fetch_Search_Bar_Results_Service } from '../../../services/propertyService'
 
 
-function SearchBar() {
+function SearchBar({searchResult, setSerarchResults}) {
   const [searchTerm, setSearchTerm] = useState('')
-  const [searchResult, setSerarchResults] = useState([])
+  // const [searchResult, setSerarchResults] = useState([])
 
 
   // Fetch search results on every keypress
@@ -40,7 +40,7 @@ function SearchBar() {
 
 
   return (
-    <div  className="relative ">
+    <div className="relative ">
       {/* Search Input field */}
       <div className="">
         <Search
@@ -53,7 +53,10 @@ function SearchBar() {
 
       {/* Display search results */}
       {searchResult && (
-        <div className="absolute top-[3rem]">
+        <div
+          // style={{ border: "3px solid red" }}
+          className="absolute top-[3rem] mt-3"
+        >
           <SearchResult
             setSerarchResults={setSerarchResults}
             searchResult={searchResult}

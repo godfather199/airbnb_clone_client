@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { thunk_Add_To_Whishlist, thunk_Login, thunk_Logout_User, thunk_Remove_From_Whishlist, thunk_Update_User_Info, thunk_property_From_Whishlist } from "../thunks/userThunk"
+import { thunk_Add_To_Whishlist, thunk_Login, thunk_Logout_User, thunk_Register, thunk_Remove_From_Whishlist, thunk_Update_User_Info, thunk_property_From_Whishlist } from "../thunks/userThunk"
 import toast from "react-hot-toast"
 
 const initialState = {
@@ -26,6 +26,30 @@ export const userSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
+          .addCase(thunk_Register.pending, (state) => {
+            state.is_Loading = true
+          })
+          .addCase(thunk_Register.fulfilled, (state, {payload}) => {
+            const {msg, info} = payload
+
+            state.is_Loading = false
+            state.is_Success = true
+            // state.current_User = info
+
+            toast.success(msg, {
+              duration: 2000,
+              position: 'bottom-center'
+            })
+          })
+          .addCase(thunk_Register.rejected, (state, {payload}) => {
+            state.is_Loading = false
+            state.is_Success = false
+
+            toast.error(payload, {
+              duration: 2000,
+              position: 'bottom-center'
+            })
+          })
           .addCase(thunk_Login.pending, (state) => {
             state.is_Loading = true
           })
@@ -86,7 +110,7 @@ export const userSlice = createSlice({
           .addCase(thunk_Update_User_Info.fulfilled, (state, {payload}) => {
             const {msg, updated_Info} = payload
 
-            state.is_Loading = true
+            state.is_Loading = false
             state.is_Success = true
             state.current_User = updated_Info
             

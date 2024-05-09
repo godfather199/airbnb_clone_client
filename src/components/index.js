@@ -1,7 +1,7 @@
 export {default as LoginModal} from './auth/login/LoginModal'
 export {default as ShowHidePassword} from './auth/ShowHidePassword'
 export {default as TextField} from './auth/login/TextField'
-export {default as RegisterModal} from './auth/RegisterModal'
+export {default as RegisterModal} from './auth/register/RegisterModal'
 export {default as BookingDatesModal} from './booking-dates/BookingDatesModal'
 export {default as HeaderDates} from './booking-dates/HeaderDates'
 export {default as FooterDates} from './booking-dates/FooterDates'

@@ -72,12 +72,12 @@ function PropertyType() {
   return (
     <div
       // style={{ border: "3px solid purple" }}
-      className="w-full sm:w-[94%] xl:w-[75rem] p-5 flex items-center justify-between md:justify-around"
+      className="w-full sm:w-[94%] xl:w-[45rem] p-5 flex items-center justify-between gap-5  md:justify-around mb-5"
     >
       {/* Categories */}
       <div
         // style={{ border: "3px solid green" }}
-        className="w-[20rem] md:w-[65%] flex justify-between"
+        className="w-[20rem] md:w-[85%] xl:w-[80%] flex justify-between border-2 border-gray-200 rounded-lg shadow-lg p-3 md:p-4"
       >
         {categories.map(({ title, source }) => (
           <div
@@ -89,7 +89,10 @@ function PropertyType() {
             onClick={() => handle_Current_Category(title)}
           >
             <img src={source} alt="" className="w-[1.7rem] h-[1.7rem]" />
-            <span className="text-sm text-gray-500  font-medium hidden md:block">
+            <span
+              // style={{ border: "3px solid red" }}
+              className="text-sm text-gray-500  font-medium text-center hidden md:block"
+            >
               {title}
             </span>
           </div>
@@ -97,7 +100,7 @@ function PropertyType() {
       </div>
 
       {/*  Filters */}
-      <div className="">
+      <div className="border-2 border-gray-200 rounded-lg shadow-lg p-4">
         <Filter />
       </div>
     </div>

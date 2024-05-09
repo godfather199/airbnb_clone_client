@@ -13,7 +13,7 @@ import { useForm } from 'react-hook-form';
 import * as yup from 'yup'
 import {yupResolver} from '@hookform/resolvers/yup'
 import { useDispatch, useSelector } from 'react-redux';
-import { thunk_Login } from '../../../store/thunks/userThunk';
+import { thunk_Login, thunk_Register } from '../../../store/thunks/userThunk';
 import { CircularProgress } from '@mui/material';
 import { reset_User_State } from '../../../store/slices/userSlice';
 
@@ -25,6 +25,7 @@ const Transition = forwardRef(function Transition(props, ref) {
 
 
 const schema = yup.object().shape({
+  name: yup.string().required('**Enter username'),
   email: yup
     .string()
     .required("**Enter email")
@@ -37,18 +38,19 @@ const schema = yup.object().shape({
 
 
 
-export default function LoginModal({
-  openLogin,
-  handle_Login_Open,
-  handle_Login_Close,
+export default function RegisterModal({
+  openRegister,
+  handle_Register_Close,
+  handle_Register_Open,
   is_Loading,
 }) {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   // console.log('is_Success: ', is_Success)
   // console.log('is_Loading: ', is_Loading)
   // console.log('current_User: ', current_User)
 
+  
   const {
     register,
     handleSubmit,
@@ -59,24 +61,25 @@ export default function LoginModal({
   });
 
 
-  const handle_Login_Submit = (value) => {
-     dispatch(thunk_Login(value));
-   };
+  const handle_Register_Submit = (value) => {
+    // console.log('Inside register: ', value)
+    dispatch(thunk_Register(value));
+  };
 
 
   return (
     <>
-      <span className="ml-[0.7rem]" onClick={handle_Login_Open}>
-        Login
+      <span className="ml-[0.7rem]" onClick={handle_Register_Open}>
+        Register
       </span>
 
       {/* Login dialog */}
       <Dialog
         // open={true}
-        open={openLogin}
+        open={openRegister}
         TransitionComponent={Transition}
         keepMounted
-        onClose={handle_Login_Close}
+        onClose={handle_Register_Close}
         aria-describedby="alert-dialog-slide-description"
       >
         <div
@@ -90,9 +93,9 @@ export default function LoginModal({
           >
             <CloseIcon
               style={{ fontSize: "1.3rem", fontWeight: "bold" }}
-              onClick={handle_Login_Close}
+              onClick={handle_Register_Close}
             />
-            <span className="text-lg text-gray-700 font-bold">Log in</span>
+            <span className="text-lg text-gray-700 font-bold">Register</span>
           </div>
           <div className="border border-gray-200 my-3" />
 
@@ -110,9 +113,15 @@ export default function LoginModal({
               <form
                 // style={{ border: "3px solid purple" }}
                 className="mt-5 p-4"
-                onSubmit={handleSubmit(handle_Login_Submit)}
+                onSubmit={handleSubmit(handle_Register_Submit)}
                 autoComplete="off"
               >
+                <TextField
+                  register={register}
+                  field="Name"
+                  errors={errors.name?.message}
+                />
+
                 <TextField
                   register={register}
                   field="Email"
@@ -124,10 +133,6 @@ export default function LoginModal({
                   field="Password"
                   errors={errors.password?.message}
                 />
-
-                {/* <div className="">
-                  <input type="email" className="" placeholder='Email' />
-                </div> */}
 
                 <div className="mt-7">
                   <button
@@ -143,7 +148,7 @@ export default function LoginModal({
                         size="1.5rem"
                       />
                     ) : (
-                      "Login"
+                      "Register"
                     )}
                   </button>
                 </div>

@@ -3,6 +3,16 @@ import toast from "react-hot-toast";
 
 
 
+export const register_Service = async (info) => {
+    const {data} = await axios.post(
+        `/api/user/register`, info
+    )
+
+    return data
+}
+
+
+
 export const login_Service = async (info) => {
     const {data} = await axios.post(
         `/api/user/login`, info

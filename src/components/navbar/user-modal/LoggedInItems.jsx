@@ -1,13 +1,18 @@
-import { LoginModal } from "../../";
+import { LoginModal, RegisterModal } from "../../";
 import MenuItem from "@mui/material/MenuItem";
 import LoginIcon from "@mui/icons-material/Login";
 import { useState } from "react";
+
+
 
 function LoggedInItems({
   handle_Login_Open,
   handle_Login_Close,
   openLogin,
   is_Loading,
+  openRegister,
+  handle_Register_Open,
+  handle_Register_Close
 }) {
 
   return (
@@ -34,7 +39,12 @@ function LoggedInItems({
 	c-0.302,0.301-0.581,0.619-0.854,0.942H35V30z M159.12,280H135v-24.121l109.667-109.666l24.12,24.12L159.12,280z"
           />
         </svg>
-        <span className="ml-[0.7rem]">Register</span>
+        <RegisterModal
+          openRegister={openRegister}
+          handle_Register_Close={handle_Register_Close}
+          handle_Register_Open={handle_Register_Open}
+          is_Loading={is_Loading}
+        />
       </MenuItem>
       <MenuItem
         // style={{ border: "3px solid green" }}

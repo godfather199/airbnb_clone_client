@@ -23,25 +23,32 @@ function BookingAmount({dateRange, cost, guests, stripeSuccess}) {
 
 
   return (
-    <div className="flex flex-col gap-6">
-
+    <div
+      // style={{ border: "3px solid green" }}
+      // className= {`border-2 border-red-600 w-[21rem] md:w-[24rem] h-[20rem] flex flex-col gap-6 p-6 rounded-lg shadow-lg`}
+      className={`border-2 border-red-600  flex flex-col  rounded-lg shadow-lg ${
+        stripeSuccess
+          ? "w-[21rem] md:w-[24rem] h-[20rem] gap-6 p-6"
+          : " border-4  bg-red-100 w-[25rem] md:w-[25rem] h-[12.5rem] gap-7 p-5 shadow-xl mb-3"
+      } `}
+    >
       {/* Guests */}
       {stripeSuccess && (
-      <div className="flex flex-col  justify-between text-lg text-gray-700 border border-black p-3 rounded-lg shadow-lg">
-        <div className="">
-          <span className="">Total Guests</span>
-        </div>
+        <div className="flex flex-col  justify-between text-lg text-gray-700 border border-black p-3 rounded-lg shadow-lg">
+          <div className="">
+            <span className=" ">Total Guests</span>
+          </div>
 
-        <div className=" text-sm w-[10rem] flex items-center justify-between ">
-          <span className="">Adults:</span>
-          <span className="">{guests?.adults}</span>
-        </div>
+          <div className=" text-sm w-[10rem] flex items-center justify-between ">
+            <span className="">Adults:</span>
+            <span className="">{guests?.adults}</span>
+          </div>
 
-        <div className="w-[10rem] text-sm flex items-center justify-between">
-          <span className="">Children:</span>
-          <span className="">{guests?.children}</span>
+          <div className="w-[10rem] text-sm flex items-center justify-between">
+            <span className="">Children:</span>
+            <span className="">{guests?.children}</span>
+          </div>
         </div>
-      </div>
       )}
 
       {/* nights * cost */}
@@ -50,7 +57,7 @@ function BookingAmount({dateRange, cost, guests, stripeSuccess}) {
           // style={{ border: "2px solid orange" }}
           className="w-[11rem] flex items-center justify-between border border-b-gray-700 border-r-0 border-l-0 border-t-0 text-md "
         >
-          <span  className="">{`₹${cost
+          <span className="">{`₹${cost
             ?.toString()
             .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}</span>
           <CloseIcon style={{ fontSize: "1.1rem", marginTop: "2px" }} />
@@ -88,7 +95,7 @@ function BookingAmount({dateRange, cost, guests, stripeSuccess}) {
         </div>
 
         <div className="">
-          <span className="">{`₹${((calculate_Days() * cost) + 1200)
+          <span className="">{`₹${(calculate_Days() * cost + 1200)
             ?.toString()
             .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}</span>
         </div>

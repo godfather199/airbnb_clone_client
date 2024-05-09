@@ -9,9 +9,14 @@ function Whishlist() {
 
   return (
     <div className="">
-      <Properties />
+      <div className="mb-5">
+        <span className="text-2xl text-red-500 font-bold">WHISHLIST</span>
+      </div>
+      <div className="">
+        <Properties />
+      </div>
     </div>
-  )
+  );
 }
 
 export default Whishlist    
