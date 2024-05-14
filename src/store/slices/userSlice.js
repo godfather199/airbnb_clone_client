@@ -8,7 +8,8 @@ const initialState = {
     is_Error: false,
     current_User: null,
     whishlist_Properties: [],
-    is_Success_Whishlist: false
+    is_Success_Whishlist: false,
+    google_Entry: false
 }
 
 
@@ -22,6 +23,12 @@ export const userSlice = createSlice({
       },
       reset_Is_Success_Whishlist: (state) => {
         state.is_Success_Whishlist = false
+      },
+      set_Google_Entry_State: (state, {payload}) => {
+        state.google_Entry = payload
+      },
+      set_Google_Entry_User: (state, {payload}) => {
+        state.current_User = payload
       }
     },
     extraReducers: (builder) => {
@@ -136,7 +143,7 @@ export const userSlice = createSlice({
 
 
 
-export const { reset_User_State, reset_Is_Success_Whishlist } =
+export const { reset_User_State, reset_Is_Success_Whishlist, set_Google_Entry_State, set_Google_Entry_User } =
   userSlice.actions;
 
 

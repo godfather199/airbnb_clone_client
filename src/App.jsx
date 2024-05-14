@@ -5,7 +5,9 @@ import axios from "axios"
 
 
 // Setting axios defaults globally
-axios.defaults.baseURL = import.meta.env.VITE_BACKEND_URL
+export const backend_URL = import.meta.env.VITE_BACKEND_URL
+
+axios.defaults.baseURL = backend_URL
 axios.defaults.withCredentials = true
 
 

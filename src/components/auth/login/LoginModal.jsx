@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { thunk_Login } from '../../../store/thunks/userThunk';
 import { CircularProgress } from '@mui/material';
 import { reset_User_State } from '../../../store/slices/userSlice';
+import GoogleOAuth from '../../google-oauth/GoogleOAuth';
 
 
 
@@ -151,23 +152,17 @@ export default function LoginModal({
             </div>
           </div>
 
-          {/* <div
+          <div
             // style={{ border: "3px solid red" }}
-            className="flex items-center justify-around w-full my-5"
+            className="flex items-center justify-around w-[90%] my-2 ml-5"
           >
-            <div className="border border-gray-300  w-[15rem]" />
+            <div className="border border-gray-300  w-[12rem]" />
             <span className="">or</span>
-            <div className="border border-gray-300  w-[15rem]" />
-          </div> */}
+            <div className="border border-gray-300  w-[12rem]" />
+          </div>
 
           {/* Google OAuth */}
-          {/* <div
-            className="border-2 border-gray-500 w-[25.5rem] p-3 text-md text-gray-500 font-semibold rounded-[4rem] text-center flex items-center justify-center gap-[0.8rem] cursor-pointer"
-            // onClick={handle_Google_OAuth2}
-          >
-            <GoogleIcon style={{ color: "red", fontSize: "1.8rem" }} />
-            <span className="">Continue with Google</span>
-          </div> */}
+          <GoogleOAuth />
         </div>
       </Dialog>
     </>
