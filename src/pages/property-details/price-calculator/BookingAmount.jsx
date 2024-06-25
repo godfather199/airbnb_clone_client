@@ -52,24 +52,26 @@ function BookingAmount({dateRange, cost, guests, stripeSuccess}) {
       )}
 
       {/* nights * cost */}
-      <div className="flex items-center justify-between text-lg text-gray-700 ">
-        <div
-          // style={{ border: "2px solid orange" }}
-          className="w-[11rem] flex items-center justify-between border border-b-gray-700 border-r-0 border-l-0 border-t-0 text-md "
-        >
-          <span className="">{`₹${cost
-            ?.toString()
-            .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}</span>
-          <CloseIcon style={{ fontSize: "1.1rem", marginTop: "2px" }} />
-          <span className="">{`${calculate_Days()} nights`}</span>
-        </div>
+      {dateRange && (
+        <div className="flex items-center justify-between text-lg text-gray-700 ">
+          <div
+            // style={{ border: "2px solid orange" }}
+            className="w-[11rem] flex items-center justify-between border border-b-gray-700 border-r-0 border-l-0 border-t-0 text-md "
+          >
+            <span className="">{`₹${cost
+              ?.toString()
+              .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}</span>
+            <CloseIcon style={{ fontSize: "1.1rem", marginTop: "2px" }} />
+            <span className="">{`${calculate_Days()} nights`}</span>
+          </div>
 
-        <div className="">
-          <span className="">{`₹${(calculate_Days() * cost)
-            ?.toString()
-            .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}</span>
+          <div className="">
+            <span className="">{`₹${(calculate_Days() * cost)
+              ?.toString()
+              .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}</span>
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Airbnb cost */}
       <div className="flex items-center justify-between  text-gray-700 ">

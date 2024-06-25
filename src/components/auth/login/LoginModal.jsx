@@ -156,13 +156,13 @@ export default function LoginModal({
             // style={{ border: "3px solid red" }}
             className="flex items-center justify-around w-[90%] my-2 ml-5"
           >
-            <div className="border border-gray-300  w-[12rem]" />
+            {/* <div className="border border-gray-300  w-[12rem]" />
             <span className="">or</span>
-            <div className="border border-gray-300  w-[12rem]" />
+            <div className="border border-gray-300  w-[12rem]" /> */}
           </div>
 
           {/* Google OAuth */}
-          <GoogleOAuth />
+          {/* <GoogleOAuth /> */}
         </div>
       </Dialog>
     </>

@@ -13,20 +13,20 @@ function StripeSuccess() {
 
   const {isLoading, booking, isSuccess} = useSelector(state => state.booking)
   const {property} = useSelector(state => state.property)
-  // console.log('Latest booking: ', booking)
-  // console.log('Property: ', property)
+  console.log('Latest booking: ', booking)
+  console.log('Property: ', property)
 
   // Fetch latest booking
   useEffect(() => {
+    console.log('Inside latest booking useeffect()')
     dispatch(thunk_Fetch_Latest_Booking())
-
   }, [])
   
   
   // Fetch property details
   useEffect(() => {
     if(isSuccess) {
-      dispatch(thunk_Fetch_Single_Property(booking.propertyId))
+      dispatch(thunk_Fetch_Single_Property(booking?.propertyId))
       dispatch(reset_Booking_Success_State())
     }
     

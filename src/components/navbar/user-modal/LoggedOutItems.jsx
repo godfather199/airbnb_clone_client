@@ -31,14 +31,14 @@ function LoggedOutItems({handleClose}) {
 
   return (
     <div>
-      <MenuItem
+      {/* <MenuItem
         // style={{ border: "3px solid green", borderRadius: '2rem' }}
         className="w-[15rem] h-[3.5rem]"
         onClick={handleClose}
       >
         <MessageIcon style={{ color: "red" }} />{" "}
         <span className=" ml-[0.7rem]">Messages</span>
-      </MenuItem>
+      </MenuItem> */}
 
       <Link to="/trips">
         <MenuItem
