@@ -13,8 +13,8 @@ function StripeSuccess() {
 
   const {isLoading, booking, isSuccess} = useSelector(state => state.booking)
   const {property} = useSelector(state => state.property)
-  console.log('Latest booking: ', booking)
-  console.log('Property: ', property)
+  // console.log('Latest booking: ', booking)
+  // console.log('Property: ', property)
 
   // Fetch latest booking
   useEffect(() => {
@@ -49,7 +49,7 @@ function StripeSuccess() {
           </span>
         </div>
 
-        {property && booking && (
+        {/* {property && booking && (
           <div className="flex flex-col md:flex-row  justify-center gap-[2rem] lg:gap-[4rem] border-2 border-gray-300 p-10 rounded-lg shadow-lg">
             <Property property={property} />
             <BookingAmount
@@ -59,7 +59,7 @@ function StripeSuccess() {
               stripeSuccess={true}
             />
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );
